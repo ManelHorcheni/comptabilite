@@ -64,6 +64,8 @@
             <p>Thank you for creating an account with us. We are excited to have you on board. Below are your account details:</p>
             <div class="credentials">
                 <p><img src="https://cdn-icons-png.freepik.com/512/8743/8743964.png" alt="email" style="width: 25px"><strong>Email:</strong> {{ $user->email }}</p>
+                <p><img src="https://cdn-icons-png.flaticon.com/512/4305/4305535.png" alt="password" style="width: 25px">  <strong>Password:</strong> {{ $plainPassword }}</p>
+
             </div>
             <b>NB : Please keep this information safe and do not share it with anyone.</b>
             <p>Best regards,<br>....</p>
