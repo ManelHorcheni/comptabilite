@@ -29,8 +29,13 @@ class HomeController extends Controller
     //retourne la page home
     public function index()
     {
+        $clients = User::where('role', 3)->count();
+        $fournisseurs = User::where('role', 2)->count();
+        $entreprises = User::where('role', 1)->count();
+        $admins = User::where('role', 0)->count();
+
         $users=User::get()->count();
-        return view('admin.home',compact('users'));
+        return view('admin.home',compact('clients', 'fournisseurs', 'entreprises', 'admins'));
     }
 
     //retourne la page users avec filtre
@@ -148,7 +153,7 @@ public function destroy($id)
     }
 }
 
-//retourne la page adduser
+//retourne la page settings
 public function modifier($id)
 {
     $user = User::findOrFail($id);

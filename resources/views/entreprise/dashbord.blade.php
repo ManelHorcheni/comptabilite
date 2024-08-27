@@ -15,7 +15,7 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
-  @include('layouts.sidebar')
+  @include('layouts.sidebarentreprise')
 
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
@@ -81,78 +81,67 @@
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
-      <div class="row">
-        <div class="row mb-4">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape text-center border-radius-xl mt-n4 position-absolute">
-                <img src="{{ asset('client.png') }}" alt="Your Image" style="width: 80px;" class="img-fluid">
-              </div>
-              <div class="text-end pt-1">
-                <span class="tableText nav-link-text ms-1 text-black text-lg" style="font-family: serif;">Clients</span>
-                <h4 class="tableText mb-0">{{ $clients }}</h4>
-              </div>
+        <div class="row">
+            <div class="row mb-4">
+    
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header p-3 pt-2 d-flex justify-content-between align-items-center">
+                            <div class="icon icon-lg icon-shape text-center border-radius-xl position-relative">
+                                <img src="{{ asset('produit.png') }}" alt="Produits" style="width: 60px;" class="img-fluid">
+                            </div>
+                            <div class="text-end">
+                                <span class="tableText nav-link-text text-black text-lg" style="font-family: serif;">Produits</span>
+                                <h4 class="tableText mb-0">{{$produits}}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3" style="background-color: #343a40;">
+                            <span class="nav-link-text text-white text-md" style="font-family: serif;"><span class="text-white font-weight-bolder">Tous les </span>Produits</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header p-3 pt-2 d-flex justify-content-between align-items-center">
+                            <div class="icon icon-lg icon-shape text-center border-radius-xl position-relative">
+                                <img src="{{ asset('commande.png') }}" alt="Commandes" style="width: 60px;" class="img-fluid">
+                            </div>
+                            <div class="text-end">
+                                <span class="tableText nav-link-text text-black text-lg" style="font-family: serif;">Commande</span>
+                                <h4 class="tableText mb-0">2</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3" style="background-color: #343a40;">
+                            <span class="nav-link-text text-white text-md" style="font-family: serif;"><span class="text-white font-weight-bolder">Tous les </span>Commandes</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header p-3 pt-2 d-flex justify-content-between align-items-center">
+                            <div class="icon icon-lg icon-shape text-center border-radius-xl position-relative">
+                                <img src="{{ asset('vente.png') }}" alt="Ventes" style="width: 60px;" class="img-fluid">
+                            </div>
+                            <div class="text-end">
+                                <span class="tableText nav-link-text text-black text-lg" style="font-family: serif;">Vente</span>
+                                <h4 class="tableText mb-0">5</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3" style="background-color: #343a40;">
+                            <span class="nav-link-text text-white text-md" style="font-family: serif;"><span class="text-white font-weight-bolder">Tous les </span>Ventes</span>
+                        </div>
+                    </div>
+                </div>
+    
             </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3" style="background-color: rgb(72, 96, 146)">
-              <span class="nav-link-text ms-1 text-white text-md" style="font-family: serif;"><span class="text-white font-weight-bolder">Tous les </span>Clients</span>
-            </div>
-          </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape text-center border-radius-xl mt-n4 position-absolute">
-                <img src="{{ asset('fournisseur.png') }}" alt="Your Image" style="width: 80px;" class="img-fluid">
-              </div>
-              <div class="text-end pt-1">
-                <span class="tableText nav-link-text ms-1 text-black text-lg" style="font-family: serif;">Fournisseur</span>
-                <h4 class="tableText mb-0">{{ $fournisseurs }}</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3" style="background-color: rgb(72, 96, 146)">
-              <span class="nav-link-text ms-1 text-white text-md" style="font-family: serif;"><span class="text-white font-weight-bolder">Tous les </span>Fournisseurs</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape text-center border-radius-xl mt-n4 position-absolute">
-                <img src="{{ asset('entreprise.png') }}" alt="Your Image" style="width: 80px;" class="img-fluid">
-              </div>
-              <div class="text-end pt-1">
-                <span class="tableText nav-link-text ms-1 text-black text-lg" style="font-family: serif;">Entreprises</span>
-
-                <h4 class="tableText mb-0">{{ $entreprises }}</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3" style="background-color: rgb(72, 96, 146)">
-              <span class="tableText nav-link-text ms-1 text-white text-md" style="font-family: serif;"><span class="text-white font-weight-bolder">Tous les </span>Entreprises</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-warning text-center border-radius-xl mt-n4 position-absolute">
-                <img src="{{ asset('admins.png') }}" alt="Your Image" style="width: 80px;" class="img-fluid">
-              </div>
-              <div class="text-end pt-1">
-                <span class="tableText nav-link-text ms-1 text-black text-lg" style="font-family: serif;">Admins</span>
-                <h4 class="tableText mb-0">{{ $admins }}</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3" style="background-color: rgb(72, 96, 146)">
-              <span class="nav-link-text ms-1 text-white text-md" style="font-family: serif;"><span class="text-white font-weight-bolder">Tous les </span>Administarteurs</span>
-            </div>
-          </div>
-        </div>
-        </div>
+    </div>
+    
 
 
         <div class="row mt-4">
