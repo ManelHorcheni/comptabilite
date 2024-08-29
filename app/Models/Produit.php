@@ -16,6 +16,13 @@ class Produit extends Model
         'prix',
         'quantite',
         'categorie',
+        'id_entreprise',
         
     ];
+
+    // Relation avec l'utilisateur (entreprise)
+    public function entreprise()
+    {
+        return $this->belongsTo(User::class, 'id_entreprise');
+    }
 }

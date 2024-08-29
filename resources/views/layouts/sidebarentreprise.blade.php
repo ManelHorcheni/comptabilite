@@ -66,7 +66,13 @@
                     vente
                 </a>
                 </li>
-          
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="#" style="font-weight:bold;{{ Request::is('fournisseurs')  ? 'background-color: #6aa3ff;color:black;' : '' }}" >
+                    <i class="fa-solid fa-shop"></i>&nbsp;
+                      Fournisseurs
+                  </a>
+                  </li>
         
     
             @guest

@@ -98,7 +98,7 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <form class="row g-3" method="post" action="{{Route('store')}}">
+                            <form class="row g-3" method="POST" action="{{ route('store') }}">
                                 @csrf
                                 <div class="col-12">
                                     <label for="name" class="form-label">Name</label>

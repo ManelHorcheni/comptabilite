@@ -28,6 +28,12 @@ class User extends Authenticatable
         'role',
     ];
 
+    // Relation avec les produits
+    public function produits()
+    {
+        return $this->hasMany(Produit::class, 'id_entreprise');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -50,4 +56,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function isAdmin()
+{
+    return $this->role === 0; 
+}
+public function isEntreprise()
+{
+    return $this->role === 1; 
+}
 }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('img')->default('produitt.png');
             $table->integer('quantite')->nullable();
             $table->string('categorie')->nullable();
+            // Ajout du champ id_entreprise comme clé étrangère
             
         });
     }

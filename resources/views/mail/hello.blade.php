@@ -56,7 +56,7 @@
 <body>
     <div class="email-container">
         <div class="header">
-            <img src="https://www.digika.tn/wp-content/uploads/2018/11/main-logo-3.png" alt="Company Logo">
+            {{-- <img src="https://www.digika.tn/wp-content/uploads/2018/11/main-logo-3.png" alt="Company Logo"> --}}
         </div>
         <div class="content">
             <h1>Welcome to Our Service!</h1>

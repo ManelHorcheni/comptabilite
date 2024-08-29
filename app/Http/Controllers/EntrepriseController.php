@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Produit;
+use Illuminate\Support\Facades\Auth;
 
 class EntrepriseController extends Controller
 {
@@ -52,6 +53,7 @@ class EntrepriseController extends Controller
             'img' => $imageName,
             'quantite' => $request->quantite,
             'categorie' => $request->categorie,
+            'id_entreprise' => Auth::user()->id, // ID de l'entreprise actuelle
         ]);
 
         // Redirection avec un message de succès
@@ -59,7 +61,42 @@ class EntrepriseController extends Controller
     }
 
     //retourne la page produits avec filtre
-public function allproduits(Request $request)
+
+    public function allproduits(Request $request)
+    {
+        $entrepriseId = Auth::user()->id;
+    
+        $query = Produit::where('id_entreprise', $entrepriseId);
+    
+        // Filtrer par nom
+        if ($request->has('name') && !empty($request->input('name'))) {
+            $query->where('name', 'LIKE', '%' . $request->input('name') . '%');
+        }
+    
+        // Filtrer par catégorie
+        if ($request->has('categorie') && !empty($request->input('categorie'))) {
+            $query->where('categorie', $request->input('categorie'));
+        }
+    
+        // Filtrer par prix minimum
+        if ($request->has('prix_min') && !empty($request->input('prix_min'))) {
+            $query->where('prix', '>=', $request->input('prix_min'));
+        }
+    
+        // Filtrer par prix maximum
+        if ($request->has('prix_max') && !empty($request->input('prix_max'))) {
+            $query->where('prix', '<=', $request->input('prix_max'));
+        }
+    
+        // Obtenir les produits filtrés
+        $produits = $query->get();
+    
+        return view('entreprise.produits', compact('produits'));
+    }
+    
+
+
+/* public function allproduits(Request $request)
 {
     $query = Produit::query();
 
@@ -87,7 +124,7 @@ public function allproduits(Request $request)
     $produits = $query->get();
 
     return view('entreprise.produits', compact('produits'));
-}
+} */
 
     //retourne la page parametre
     public function modifier($id)
@@ -140,6 +177,8 @@ public function destroy($id)
         return redirect()->back()->with('error', 'Produit non trouvé.');
     }
 }
+
+
 
 
 }
