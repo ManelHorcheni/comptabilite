@@ -15,7 +15,7 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
-  @include('layouts.sidebarentreprise')
+  @include('layouts.sidebarfournisseur')
 
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
@@ -84,25 +84,9 @@
         <div class="row">
             <div class="row mb-4">
     
-                <div class="col-xl-4 col-md-6 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-header p-3 pt-2 d-flex justify-content-between align-items-center">
-                            <div class="icon icon-lg icon-shape text-center border-radius-xl position-relative">
-                                <img src="{{ asset('produit.png') }}" alt="Produits" style="width: 60px;" class="img-fluid">
-                            </div>
-                            <div class="text-end">
-                                <span class="tableText nav-link-text text-black text-lg" style="font-family: serif;">Produits</span>
-                                <h4 class="tableText mb-0">{{$produits}}</h4>
-                            </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3" style="background-color: #343a40;">
-                            <span class="nav-link-text text-white text-md" style="font-family: serif;"><span class="text-white font-weight-bolder">Tous les </span>Produits</span>
-                        </div>
-                    </div>
-                </div>
+                
     
-                <div class="col-xl-4 col-md-6 mb-4">
+                <div class="col-xl-6 col-md-6 mb-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header p-3 pt-2 d-flex justify-content-between align-items-center">
                             <div class="icon icon-lg icon-shape text-center border-radius-xl position-relative">
@@ -110,17 +94,17 @@
                             </div>
                             <div class="text-end">
                                 <span class="tableText nav-link-text text-black text-lg" style="font-family: serif;">Commande</span>
-                                <h4 class="tableText mb-0">2</h4>
+                                <h4 class="tableText mb-0">0</h4>
                             </div>
                         </div>
                         <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3" style="background-color: #343a40;">
+                        <div class="card-footer p-3" style="background-color: #1a5187;">
                             <span class="nav-link-text text-white text-md" style="font-family: serif;"><span class="text-white font-weight-bolder">Tous les </span>Commandes</span>
                         </div>
                     </div>
                 </div>
     
-                <div class="col-xl-4 col-md-6 mb-4">
+                <div class="col-xl-6 col-md-6 mb-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-header p-3 pt-2 d-flex justify-content-between align-items-center">
                             <div class="icon icon-lg icon-shape text-center border-radius-xl position-relative">
@@ -128,11 +112,11 @@
                             </div>
                             <div class="text-end">
                                 <span class="tableText nav-link-text text-black text-lg" style="font-family: serif;">Vente</span>
-                                <h4 class="tableText mb-0">5</h4>
+                                <h4 class="tableText mb-0">0</h4>
                             </div>
                         </div>
                         <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3" style="background-color: #343a40;">
+                        <div class="card-footer p-3" style="background-color: #1a5187;">
                             <span class="nav-link-text text-white text-md" style="font-family: serif;"><span class="text-white font-weight-bolder">Tous les </span>Ventes</span>
                         </div>
                     </div>

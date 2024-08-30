@@ -65,4 +65,8 @@ public function isEntreprise()
 {
     return $this->role === 1; 
 }
+public function isFournisseur()
+{
+    return $this->role === 2; 
+}
 }

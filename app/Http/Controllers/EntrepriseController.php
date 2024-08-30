@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Produit;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class EntrepriseController extends Controller
@@ -176,6 +177,12 @@ public function destroy($id)
     } else {
         return redirect()->back()->with('error', 'Produit non trouvé.');
     }
+}
+    //retourne la page fournisseurs
+    public function list_fournisseurs()
+{
+    $fournisseurs = User::where('role', 2)->get();
+    return view('entreprise.fournisseurs', compact('fournisseurs'));
 }
 
 

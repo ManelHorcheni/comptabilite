@@ -9,7 +9,7 @@
 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-  <title>Meeting App</title>
+  <title>Comptabilite</title>
   <!-- Load Google Charts -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>

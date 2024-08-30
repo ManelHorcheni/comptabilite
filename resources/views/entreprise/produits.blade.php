@@ -133,6 +133,16 @@
                                                             <span class="text-muted">{{ $produit->prix }} TND</span>
                                                             <span class="badge bg-primary">{{ $produit->categorie }}</span>
                                                         </div>
+                                                        <br>
+                                                        <div class="d-flex align-items-center">
+                                                        <p class="text-muted mb-0 me-3">
+                                                        <span>{{ $produit->quantite }}</span> articles restants
+                                                        </p>
+                                                        <div class="progress flex-grow-1">
+                                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                            </div>
+
                                                         <hr>
                                                         <div class="d-flex justify-content-between align-items-center">
                                                             <!-- Afficher -->
