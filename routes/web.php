@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\FournisseurController;
+use App\Http\Controllers\CommandeController;
 
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\EntrepriseMiddleware;
@@ -41,6 +43,9 @@ Route::get('/parametre/{id}', [HomeController::class, 'modifier'])->name('parame
 Route::put('/produit/update/{id}', [EntrepriseController::class, 'update'])->name('produit.update');
 Route::delete('/produits/{id}', [EntrepriseController::class, 'destroy'])->name('produits.destroy');
 Route::get('/fournisseurs', [EntrepriseController::class, 'list_fournisseurs'])->name('fournisseurs');
+Route::post('/commandes/create', [CommandeController::class, 'store'])->name('commandes.store');
+Route::get('/commandes', [CommandeController::class, 'index'])->name('commandes.index');
+
 
 });
 
@@ -48,6 +53,9 @@ Route::get('/fournisseurs', [EntrepriseController::class, 'list_fournisseurs'])-
 Route::middleware([FournisseurMiddleware::class])->group(function () {
 
 Route::get('/bord', [FournisseurController::class, 'index'])->name('bord');
+Route::get('/fournisseur/commandes', [CommandeController::class, 'afficher_Commandes'])->name('fournisseur.commandes');
+Route::put('/fournisseur/commandes/{id}', [CommandeController::class, 'updateCommandeStatus'])->name('fournisseur.update_commande_status');
+//Route::get('/fournisseur/commande/{id}/pdf', [CommandeController::class, 'telechargerPDF'])->name('commande.telecharger_pdf');
 
 });
 

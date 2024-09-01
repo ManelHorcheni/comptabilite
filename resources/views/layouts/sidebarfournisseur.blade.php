@@ -38,7 +38,7 @@
             
 
           <li class="nav-item">
-            <a class="nav-link" href="#" style="font-weight:bold;{{ Request::is('cammande')  ? 'background-color: #6aa3ff;color:black;' : '' }}" >
+            <a class="nav-link" href="{{ route('fournisseur.commandes') }}" style="font-weight:bold;{{ Request::is('cammande')  ? 'background-color: #6aa3ff;color:black;' : '' }}" >
               <i class="fa-solid fa-file-contract"></i>&nbsp;
                 Commande
             </a>

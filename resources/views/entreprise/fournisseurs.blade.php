@@ -130,12 +130,63 @@
                                                     </p>
                                                 </td>
                                                 <td>
-                                                    <button type="button" class="btn btn-outline-warning">Commander</button>
+                                                    <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#commanderModal{{ $fournisseur->id }}" data-fournisseur-id="{{ $fournisseur->id }}" data-toggle="tooltip" data-original-title="commander">
+                                                        Commander
+                                                    </button>
+                                                    
                                                 </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+                                    <!-- Commander Modal -->
+                                    <div class="modal fade" id="commanderModal{{ $fournisseur->id }}" tabindex="-1" aria-labelledby="commanderModalLabel{{ $fournisseur->id }}" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="commanderModalLabel{{ $fournisseur->id }}">Commander</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <form action="{{ route('commandes.store') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" id="fournisseur_id" name="fournisseur_id" value="{{ $fournisseur->id }}">
+                                                        <div class="mb-3">
+                                                            <label for="designation" class="form-label">Désignation</label>
+                                                            <input type="text" class="form-control" id="designation" name="designation" required>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="description" class="form-label">Description</label>
+                                                            <textarea class="form-control" id="description" name="description"></textarea>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="quantite" class="form-label">Quantité</label>
+                                                            <input type="number" class="form-control" id="quantite" name="quantite" required min="1">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="delai_de_livraison" class="form-label">Délai de livraison</label>
+                                                            <input type="date" class="form-control" id="delai_de_livraison" name="delai_de_livraison">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">Envoyer la commande</button>
+                                                    </form>
+                                                    
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Fin Commander Modal -->
                                 </div>
                             </div>
                             @else
@@ -156,6 +207,25 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </main>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var modals = document.querySelectorAll('.modal');
+            modals.forEach(function (modal) {
+                modal.addEventListener('show.bs.modal', function (event) {
+                    var button = event.relatedTarget; // Le bouton qui a ouvert la modal
+                    var fournisseurId = button.getAttribute('data-fournisseur-id'); // L'ID du fournisseur
+    
+                    var inputFournisseurId = modal.querySelector('#fournisseur_id');
+                    inputFournisseurId.value = fournisseurId; // Met à jour le champ caché avec l'ID du fournisseur
+                });
+            });
+        });
+    </script>
+    
 </body>
 
 </html>

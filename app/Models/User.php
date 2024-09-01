@@ -57,16 +57,50 @@ class User extends Authenticatable
         ];
     }
 
+    //Role
     public function isAdmin()
+    {
+        return $this->role === 0; 
+    }
+    public function isEntreprise()
+    {
+        return $this->role === 1; 
+    }
+    public function isFournisseur()
+    {
+        return $this->role === 2; 
+    }
+
+
+public function commandes_Entreprise()
 {
-    return $this->role === 0; 
+    return $this->hasMany(Commande::class, 'entreprise_id');
 }
-public function isEntreprise()
+
+public function commandes_Fournisseur()
 {
-    return $this->role === 1; 
+    return $this->hasMany(Commande::class, 'fournisseur_id');
 }
-public function isFournisseur()
+
+public function livraisons_Entreprise()
 {
-    return $this->role === 2; 
+    return $this->hasMany(Livraison::class, 'entreprise_id');
 }
+
+public function livraisons_Fournisseur()
+{
+    return $this->hasMany(Livraison::class, 'fournisseur_id');
+}
+
+public function factures_Entreprise()
+{
+    return $this->hasMany(Facture::class, 'entreprise_id');
+}
+
+public function factures_Fournisseur()
+{
+    return $this->hasMany(Facture::class, 'fournisseur_id');
+}
+
+
 }

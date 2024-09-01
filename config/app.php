@@ -113,4 +113,15 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    /* 'providers' => [
+        Barryvdh\DomPDF\ServiceProvider::class,
+        Illuminate\Filesystem\FilesystemServiceProvider::class,
+    ],
+
+    'aliases' => [
+    
+        'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
+        'Storage' => Illuminate\Support\Facades\Storage::class,
+    ], */
+
 ];
