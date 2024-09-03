@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Bon de Commande</title>
+    <title>Bon de Livraison</title>
     <style>
         body { font-family: DejaVu Sans, sans-serif; }
         .header { text-align: center; margin-bottom: 20px; }
@@ -18,20 +18,22 @@
 </head>
 <body>
     <div class="header">
-        <h1>BON DE COMMANDE N° {{ $commande->id }}</h1>
+        <h1>BON DE LIVRAISON N° {{ $livraison->id }}</h1>
     </div>
     
     <div class="sub-header">
         <div class="left">
-            <p><strong>Fournisseur :</strong></p>
-            <p>{{ $commande->fournisseur->name }}</p>
-            <p>{{ $commande->fournisseur->address }}</p>
+            <p><strong>Entreprise :</strong></p>
+            <p>{{ $entreprise->name }}</p>
+            <p><strong>Date :</strong></p>
+            <p>{{ $livraison->delai_de_livraison }}</p>
+            <p><strong>Numéro de la commande :</strong></p>
+            <p>{{ $livraison->commande_id }}</p>
         </div>
         <div class="right">
-            <p><strong>Entreprise :</strong></p>
-            <p>{{ $commande->entreprise->name }}</p>
-            <p>{{ $commande->entreprise->address }}</p>
-            <p><strong>Date de la commande :</strong> {{ $commande->created_at->format('d/m/Y') }}</p>
+            <p><strong>Fournisseur :</strong></p>
+            <p>{{ $fournisseur->name }}</p>
+            
         </div>
     </div>
 
@@ -40,24 +42,26 @@
             <thead>
                 <tr>
                     <th>Désignation</th>
-                    <th>Quantité</th>
-                    <th>Description</th>
-                    <th>Délai de livraison</th>
+                    <th>Quantité reçue</th>
+                    <th>Quantité accepté</th>
+                    <th>Observation</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $commande->designation }}</td>
-                    <td>{{ $commande->quantite }}</td>
-                    <td>{{ $commande->description }}</td>
-                    <td>{{ $commande->delai_de_livraison }}</td>
+                    
+                    <td>{{ $livraison->commande->designation }}</td>
+                    <td>{{ $livraison->commande->quantite }}</td>
+                    <td>{{ $livraison->commande->quantite }}</td>
+                    <td></td>
+                    
                 </tr>
             </tbody>
         </table>
     </div>
     <br>
     <div class="signature">
-        <p><strong>Signature du Fournisseur</strong></p>
+        <p><strong>Signature</strong></p>
         
     </div>
 </body>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/entreprise.css') }}" rel="stylesheet">
     <title>Liste des Commandes</title>
 </head>
 
@@ -100,6 +100,7 @@
                                                 <th class="text-center text-uppercase text-xxs font-weight-bolder ps-2">Délai de Livraison</th>
                                                 <th class="text-center text-uppercase text-xxs font-weight-bolder ps-2">Fournisseur</th>
                                                 <th class="text-center text-uppercase text-xxs font-weight-bolder ps-2">Statut</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -135,6 +136,11 @@
                                                             <span class="badge bg-secondary">Inconnu</span>
                                                         @endif
                                                     </p>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('entreprise.telecharger_pdf', $commande->id) }}">
+                                                        <i class="fa-solid fa-download"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                             @endforeach

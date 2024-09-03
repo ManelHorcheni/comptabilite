@@ -52,12 +52,25 @@
               </div>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('commandes.index') }}" style="font-weight:bold;{{ Request::is('cammande')  ? 'background-color: #6aa3ff;color:black;' : '' }}" >
-              <i class="fa-solid fa-file-contract"></i>&nbsp;
-                Commande
-            </a>
-            </li>
+            <li class="nav-item dropdown">
+    
+              <a class="nav-link dropdown-toggle text-black" href="#" style="font-weight:bold;{{ Request::is('cammande') || Request::is('livraison') || Request::is('facture')  ? 'background-color: #6aa3ff;color:black;' : '' }}" id="employeeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa-solid fa-file-contract"></i>&nbsp;
+                  Commandes
+              </a>
+    
+              <div class="dropdown-menu" aria-labelledby="employeeDropdown">
+                  <a class="dropdown-item" href="{{ route('commandes.index') }}" style="font-weight:bold;{{ Request::is('cammande')  ? 'background-color: #6aa3ff;color:black;' : '' }}">
+                    <i class="fa-solid fa-file-contract"></i>&nbsp; Gestion des Commandes               
+                  </a>
+                  <a class="dropdown-item" href="{{ route('entreprise.livraison') }}" style="font-weight:bold;{{ Request::is('livraison')  ? 'background-color: #6aa3ff;color:black;' : '' }}">
+                    <i class="fa-solid fa-truck"></i>&nbsp; Livraison
+                  </a>
+                  <a class="dropdown-item" href="" style="font-weight:bold;{{ Request::is('facture')  ? 'background-color: #6aa3ff;color:black;' : '' }}">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>&nbsp; Facture
+                  </a>
+              </div>
+          </li>
             
 
             <li class="nav-item">

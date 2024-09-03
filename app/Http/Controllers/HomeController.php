@@ -160,6 +160,19 @@ public function modifier($id)
     return view('admin.settings', compact('user'));
 }
 
+//retourne la page parametre
+public function modifier_entreprise($id)
+{
+    $user = User::findOrFail($id);
+    return view('entreprise.parametre', compact('user'));
+}
+
+//retourne la page parametre
+public function modifier_fournisseur($id)
+{
+    $user = User::findOrFail($id);
+    return view('fournisseur.update_compte', compact('user'));
+}
 
 
 }

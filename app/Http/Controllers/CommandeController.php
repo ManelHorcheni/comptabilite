@@ -40,7 +40,7 @@ class CommandeController extends Controller
         return redirect()->route('fournisseur.commandes')->with('success', 'Le statut de la commande a été mis à jour.');
     }
 
- /*    public function telechargerPDF($id)
+    public function telechargerPDF($id)
 {
     // Récupérer la commande par son ID
     $commande = Commande::findOrFail($id);
@@ -50,7 +50,7 @@ class CommandeController extends Controller
 
     // Retourner le PDF pour téléchargement
     return $pdf->download('bon_commande_'.$commande->id.'.pdf');
-} */
+} 
 
     // Fonction pour stocker la commande
     public function store(Request $request)
