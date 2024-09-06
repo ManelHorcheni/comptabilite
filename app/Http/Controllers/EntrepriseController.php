@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Produit;
+use App\Models\Commande;
+use App\Models\Facture;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +16,9 @@ class EntrepriseController extends Controller
     public function index()
     {
         $produits=Produit::get()->count();
-        return view('entreprise.dashbord',compact('produits'));
+        $commandes=Commande::get()->count();
+        $factures=Facture::get()->count();
+        return view('entreprise.dashbord',compact('produits','commandes','factures'));
     }
 
     //retourne la page AddProduit

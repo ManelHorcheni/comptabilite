@@ -16,7 +16,7 @@
             <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbar">
                 <div class="container-fluid py-1 px-3">
                     <nav aria-label="breadcrumb">
-                        <h6 class="navbarText font-weight-bolder mb-0">Dashboard / Gestion des Livraison</h6>
+                        <h6 class="navbarText font-weight-bolder mb-0">Dashboard / Gestion des Factures</h6>
                     </nav>
                     <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                         <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -80,7 +80,7 @@
                                         <div class="shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center" id="cardTop">
                                             <h6 class="text-capitalize ps-3" id="titreTop">
                                                 <img src="{{ asset('commandes.png') }}" alt="Your Image" id="imageCardTop" class="img-fluid me-2">
-                                                Table de tous les livraisons
+                                                Table de tous les factures
                                             </h6>
                                             
                                         </div>
@@ -88,37 +88,42 @@
                                 </div>
                             </div>
                             <br>
-                            @if($livraisons->isEmpty())
+                            @if($factures->isEmpty())
         <p>Aucune commande reçue pour le moment.</p>
     @else
     <table class="table">
         <thead>
             <tr>
                 <th>Nom de l'Entreprise</th>
-                <th>Date de Livraison</th>
-                <th>Numéro du Commande</th>
+                {{-- <th>Nom du fournisseur</th> --}}
                 <th>Désignation</th>
                 <th>Quantité</th>
-                
+                <th>Prix Unitaire</th>
+                <th>Montant</th>
+                <th>Remise</th>
+                <th>Montant Total</th>
                 <th>Mode de paiement</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach($livraisons as $livraison)
+            @foreach($factures as $facture)
             <tr>
-                <td>{{ $livraison->commande->entreprise->name }}</td>
-                <td>{{ $livraison->commande->delai_de_livraison }}</td>
-                <td>{{ $livraison->commande->id }}</td>
-                <td>{{ $livraison->commande->designation }}</td>
-                <td>{{ $livraison->commande->quantite }}</td>
-                
-                <td>espèce</td>
+                <td>{{ $facture->commande->entreprise->name }}</td>
+                {{-- <td>{{ $facture->commande->fournisseur->name }}</td> --}}
+                <td>{{ $facture->commande->designation }}</td>
+                <td>{{ $facture->commande->quantite }}</td>
+                <td>{{ $facture->prix_unitaire }}</td>
+                <td>{{ $facture->montant }}</td>
+                <td>{{ $facture->remise }}</td>
+                <td>{{ $facture->montant_total }}</td>
+                <td>{{ $facture->mode_de_paiement }}</td>
                 <td>
-                    <a href="{{ route('livraison.pdf', $livraison->id) }}">
+                    <a href="{{ route('factures.download', $facture->id) }}">
                         <i class="fa-solid fa-download"></i>
                     </a>
                 </td>
+                
             </tr>
             @endforeach
         </tbody>
@@ -126,34 +131,9 @@
     @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
-    </div>
-    @endif
+            @endif
 
-    <!-- Modal Livrer -->
-{{-- <div class="modal fade" id="livrerModal{{ $commande->id }}" tabindex="-1" aria-labelledby="livrerModalLabel{{ $commande->id }}" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="livrerModalLabel{{ $commande->id }}">Livrer</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('livraison.store') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="commande_id" value="{{ $commande->id }}">
-                    <input type="hidden" name="entreprise_id" value="{{ $commande->entreprise_id }}">
-                    <input type="hidden" name="fournisseur_id" value="{{ Auth::user()->id }}">
-                    
-                    
-                    
-                    <button type="submit" class="btn btn-primary">Livrer</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> --}}
 
-    <!-- Fin livrer Modal -->
 
     @endif
                         </div>

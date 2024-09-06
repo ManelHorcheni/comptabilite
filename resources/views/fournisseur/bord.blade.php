@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
-  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/fournisseur.css') }}" rel="stylesheet">
 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -94,7 +94,7 @@
                             </div>
                             <div class="text-end">
                                 <span class="tableText nav-link-text text-black text-lg" style="font-family: serif;">Commande</span>
-                                <h4 class="tableText mb-0">0</h4>
+                                <h4 class="tableText mb-0">{{$commandes}}</h4>
                             </div>
                         </div>
                         <hr class="dark horizontal my-0">
@@ -112,7 +112,7 @@
                             </div>
                             <div class="text-end">
                                 <span class="tableText nav-link-text text-black text-lg" style="font-family: serif;">Vente</span>
-                                <h4 class="tableText mb-0">0</h4>
+                                <h4 class="tableText mb-0">{{$factures}}</h4>
                             </div>
                         </div>
                         <hr class="dark horizontal my-0">

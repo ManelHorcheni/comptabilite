@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Commande;
+use App\Models\Facture;
 
 class FournisseurController extends Controller
 {
     //retourne la page dashbordfournisseur
     public function index()
     {
-        return view('fournisseur.bord');
-        /* $commande=Commande::get()->count();
-        $vente=Vente::get()->count();
-        return view('fournisseur.dashbordfournisseur',compact('commande','vente')); */
+        $commandes=Commande::get()->count();
+        $factures=Facture::get()->count();
+        return view('fournisseur.bord',compact('commandes','factures'));
     }
 }

@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <title>Liste des Livraisons</title>
+    <link href="{{ asset('css/entreprise.css') }}" rel="stylesheet">
+    <title>Comptabilite</title>
 </head>
 
 <body class="g-sidenav-show bg-gray-200">
@@ -134,11 +134,13 @@
 
         <!-- Bootstrap JS -->
         <script src="{{ asset('js/core/popper.min.js') }}"></script>
-        <script src="{{ asset('js/core/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('js/plugins/perfect-scrollbar.min.js') }}"></script>
-        <script src="{{ asset('js/plugins/smooth-scrollbar.min.js') }}"></script>
-        <script src="{{ asset('js/plugins/chartjs.min.js') }}"></script>
-        <script src="{{ asset('js/material-dashboard.min.js?v=3.1.0') }}"></script>
+  <script src="{{ asset('js/core/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('js/plugins/perfect-scrollbar.min.js') }}"></script>
+  <script src="{{ asset('js/plugins/smooth-scrollbar.min.js') }}"></script>
+  <script src="{{ asset('js/plugins/chartjs.min.js') }}"></script>
+  <script src="{{ asset('js/material-dashboard.min.js?v=3.1.0') }}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </main>
 </body>
 

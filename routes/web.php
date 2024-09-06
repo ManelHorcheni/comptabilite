@@ -51,6 +51,8 @@ Route::get('/commandes', [CommandeController::class, 'index'])->name('commandes.
 Route::get('/entreprise/livraisons', [LivraisonController::class, 'livraisonEntreprise'])->name('entreprise.livraison');
 Route::get('/livraisons/pdf/{id}', [LivraisonController::class, 'downloadPDF'])->name('livraisons.pdf');
 Route::get('/entreprise/telecharger_pdf/{id}/pdf', [CommandeController::class, 'telechargerPDF'])->name('entreprise.telecharger_pdf');
+Route::get('/facture', [FactureController::class, 'index_Entreprise'])->name('facture.index_Entreprise');
+Route::get('/facture/download/{id}', [FactureController::class, 'downloadPDF'])->name('facture.download');
 
 });
 
@@ -65,7 +67,9 @@ Route::get('/update/{id}', [HomeController::class, 'modifier_fournisseur'])->nam
 Route::post('/livraison', [LivraisonController::class, 'store'])->name('livraison.store');
 Route::get('/livraisons', [LivraisonController::class, 'index'])->name('livraisons.index');
 Route::get('/livraison/pdf/{id}', [LivraisonController::class, 'downloadPDF'])->name('livraison.pdf');
-
+Route::post('/fournisseur/facture/store/{commande}', [FactureController::class, 'store'])->name('fournisseur.facture.store');
+Route::get('/factures/download/{id}', [FactureController::class, 'downloadPDF'])->name('factures.download');
+Route::get('/factures', [FactureController::class, 'index_Fourisseur'])->name('factures.index_Fourisseur');
 
 });
 

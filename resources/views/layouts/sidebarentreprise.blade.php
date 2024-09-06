@@ -66,19 +66,14 @@
                   <a class="dropdown-item" href="{{ route('entreprise.livraison') }}" style="font-weight:bold;{{ Request::is('livraison')  ? 'background-color: #6aa3ff;color:black;' : '' }}">
                     <i class="fa-solid fa-truck"></i>&nbsp; Livraison
                   </a>
-                  <a class="dropdown-item" href="" style="font-weight:bold;{{ Request::is('facture')  ? 'background-color: #6aa3ff;color:black;' : '' }}">
+                  <a class="dropdown-item" href="{{ route('facture.index_Entreprise') }}" style="font-weight:bold;{{ Request::is('facture')  ? 'background-color: #6aa3ff;color:black;' : '' }}">
                     <i class="fa-solid fa-file-invoice-dollar"></i>&nbsp; Facture
                   </a>
               </div>
           </li>
             
 
-            <li class="nav-item">
-                <a class="nav-link" href="#" style="font-weight:bold;{{ Request::is('vente')  ? 'background-color: #6aa3ff;color:black;' : '' }}" >
-                    <i class="fa-solid fa-cash-register"></i>&nbsp;
-                    vente
-                </a>
-                </li>
+            
                 
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('fournisseurs') }}" style="font-weight:bold;{{ Request::is('fournisseurs')  ? 'background-color: #6aa3ff;color:black;' : '' }}" >
@@ -93,7 +88,7 @@
             @else
             <hr><hr>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('parametre', ['id' => auth()->user()->id]) }}" style="font-weight:bold;{{ Request::is('settings')  ? 'background-color: #6aa3ff;color:black;' : '' }}" >
+              <a class="nav-link" href="{{ route('parametre', ['id' => auth()->user()->id]) }}" style="font-weight:bold;{{ Request::is('parametre')  ? 'background-color: #6aa3ff;color:black;' : '' }}" >
                 <i class="fa fa-user-cog"></i>&nbsp;
                   Paramètres du compte
               </a>

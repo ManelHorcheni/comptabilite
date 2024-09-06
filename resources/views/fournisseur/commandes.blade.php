@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <title>Liste des Commandes</title>
+    <link href="{{ asset('css/fournisseur.css') }}" rel="stylesheet">
+    <title>Comptabilite</title>
 </head>
 
 <body class="g-sidenav-show bg-gray-200">
@@ -133,6 +133,10 @@
                     <a href="" data-bs-toggle="modal" data-bs-target="#livrerModal{{ $commande->id }}" data-commande-id="{{ $commande->id }}" data-toggle="tooltip" data-original-title="livrer">
                     <i class="fa-solid fa-truck"></i>
                     </a>
+                    
+                    <a href="" data-bs-toggle="modal" data-bs-target="#factureModal{{ $commande->id }}" data-commande-id="{{ $commande->id }}" data-toggle="tooltip" data-original-title="facture">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </a>
                 </td>
             </tr>
             @endforeach
@@ -170,6 +174,40 @@
 
     <!-- Fin livrer Modal -->
 
+        <!-- Modal Facture -->
+<div class="modal fade" id="factureModal{{ $commande->id }}" tabindex="-1" aria-labelledby="factureModalLabel{{ $commande->id }}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="factureModalLabel{{ $commande->id }}">Livrer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('fournisseur.facture.store', $commande->id) }}" method="POST">
+                    @csrf
+                    <label for="prix_unitaire">Prix unitaire:</label>
+                    <input type="number" name="prix_unitaire" required>
+
+                    <label for="remise">Remise (en %):</label>
+                    <input type="number" name="remise" placeholder="Ex: 10" step="0.01">
+
+                    <label for="mode_de_paiement">Mode de paiement:</label>
+                    <select name="mode_de_paiement" required>
+                        <option value="cash">Cash</option>
+                        <option value="cheque">Chèque</option>
+                        <!-- Autres modes de paiement -->
+                    </select>
+                
+                    <button type="submit">Envoyer la facture</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Fin Facture Modal -->
+
     @endif
                         </div>
                     </div>
@@ -178,12 +216,13 @@
         </div>
 
         <!-- Bootstrap JS -->
-        <script src="{{ asset('js/core/popper.min.js') }}"></script>
-        <script src="{{ asset('js/core/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('js/plugins/perfect-scrollbar.min.js') }}"></script>
-        <script src="{{ asset('js/plugins/smooth-scrollbar.min.js') }}"></script>
-        <script src="{{ asset('js/plugins/chartjs.min.js') }}"></script>
-        <script src="{{ asset('js/material-dashboard.min.js?v=3.1.0') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="{{ asset('js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/smooth-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('js/material-dashboard.min.js?v=3.1.0') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </main>
 </body>
 

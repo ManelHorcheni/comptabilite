@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="{{ asset('css/entreprise.css') }}" rel="stylesheet">
-    <title>Liste des Commandes</title>
+    <title>Comptabilite</title>
 </head>
 
 <body class="g-sidenav-show bg-gray-200">
@@ -74,6 +74,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card my-4">
+
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                 <div class="row align-items-center">
                                     <div class="col-md">
@@ -164,6 +165,8 @@
         <script src="{{ asset('js/plugins/smooth-scrollbar.min.js') }}"></script>
         <script src="{{ asset('js/plugins/chartjs.min.js') }}"></script>
         <script src="{{ asset('js/material-dashboard.min.js?v=3.1.0') }}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </main>
 </body>
 

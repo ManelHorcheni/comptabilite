@@ -50,7 +50,7 @@
                   <a class="dropdown-item" href="{{ route('livraisons.index') }}" style="font-weight:bold;{{ Request::is('livraisons')  ? 'background-color: #6aa3ff;color:black;' : '' }}">
                     <i class="fa-solid fa-truck"></i>&nbsp; Livraison
                   </a>
-                  <a class="dropdown-item" href="" style="font-weight:bold;{{ Request::is('factures')  ? 'background-color: #6aa3ff;color:black;' : '' }}">
+                  <a class="dropdown-item" href="{{ route('factures.index_Fourisseur') }}" style="font-weight:bold;{{ Request::is('factures')  ? 'background-color: #6aa3ff;color:black;' : '' }}">
                     <i class="fa-solid fa-file-invoice-dollar"></i>&nbsp; Facture
                   </a>
               </div>
@@ -60,19 +60,19 @@
           
             
 
-            <li class="nav-item">
-                <a class="nav-link" href="#" style="font-weight:bold;{{ Request::is('vente')  ? 'background-color: #6aa3ff;color:black;' : '' }}" >
+            {{-- <li class="nav-item">
+                <a class="nav-link" href="#" style="font-weight:bold;{{ Request::is('')  ? 'background-color: #6aa3ff;color:black;' : '' }}" >
                     <i class="fa-solid fa-cash-register"></i>&nbsp;
                     vente
                 </a>
-                </li>
+            </li>
                 
                 <li class="nav-item">
-                  <a class="nav-link" href="#" style="font-weight:bold;{{ Request::is('entreprise')  ? 'background-color: #6aa3ff;color:black;' : '' }}" >
+                  <a class="nav-link" href="#" style="font-weight:bold;{{ Request::is('')  ? 'background-color: #6aa3ff;color:black;' : '' }}" >
                     <i class="fa-solid fa-shop"></i>&nbsp;
                       Entreprise
                   </a>
-                  </li>
+                </li> --}}
         
     
             @guest
