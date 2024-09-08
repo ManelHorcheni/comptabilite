@@ -79,7 +79,7 @@
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                 <div class="shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center" id="cardTop">
                                     <h6 class="text-capitalize ps-3" id="titreTop">
-                                        <img src="{{ asset('usermanage.png') }}" alt="Your Image" id="imageCardTop" class="img-fluid me-2">
+                                        <img src="{{ asset('produit.png') }}" alt="Your Image" id="imageCardTop" class="img-fluid me-2">
                                         Tous les produits
                                     </h6>
                                     <form action="{{ route('produits.add') }}" method="GET" class="m-1">

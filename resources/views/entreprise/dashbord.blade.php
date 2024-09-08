@@ -8,6 +8,7 @@
   <link href="{{ asset('css/entreprise.css') }}" rel="stylesheet">
 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
   <title>Comptabilite</title>
   <!-- Load Google Charts -->
@@ -150,6 +151,9 @@
               <div class="card z-index-0 " >                
                 <div class="card-body" >
 
+                   
+                      
+
                 </div>
               </div>
             </div>
@@ -157,6 +161,11 @@
                     </div>
         </div>
 
+
+
+
+
+          
 
                 
 </body>

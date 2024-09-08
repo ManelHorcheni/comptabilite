@@ -51,23 +51,12 @@
           </div>
       </li>
 
-
-      <li class="nav-item dropdown">
-
-        <a class="nav-link dropdown-toggle text-black" href="#" style="font-weight:bold;{{ Request::is('produits') || Request::is('addproduit')  ? 'background-color: #6aa3ff;color:black;' : '' }}" id="employeeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-users"></i>&nbsp;
-            Produits
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('produit') }}" style="font-weight:bold;{{ Request::is('produit')  ? 'background-color: #6aa3ff;color:black;' : '' }}" >
+          <i class="fa-solid fa-boxes-stacked"></i>&nbsp;
+            Gestion des Produits
         </a>
-        
-        <div class="dropdown-menu" aria-labelledby="employeeDropdown">
-            <a class="dropdown-item" href="" style="font-weight:bold;{{ Request::is('produits')  ? 'background-color: #6aa3ff;color:black;' : '' }}">
-              <i class="fa fa-list"></i>&nbsp; Gestion des Produits               
-            </a>
-            <a class="dropdown-item" href="" style="font-weight:bold;{{ Request::is('addproduit')  ? 'background-color: #6aa3ff;color:black;' : '' }}">
-              <i class="fa fa-plus"></i>&nbsp; Ajout Produit
-            </a>
-        </div>
-      </li>
+        </li>
       
     
 

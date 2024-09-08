@@ -10,6 +10,7 @@ use App\Models\Facture;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
+
 class EntrepriseController extends Controller
 {
     //retourne la page dashbord
@@ -18,6 +19,7 @@ class EntrepriseController extends Controller
         $produits=Produit::get()->count();
         $commandes=Commande::get()->count();
         $factures=Facture::get()->count();
+
         return view('entreprise.dashbord',compact('produits','commandes','factures'));
     }
 

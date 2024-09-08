@@ -1,5 +1,6 @@
 require('./bootstrap');
 
+
 import Echo from 'laravel-echo';
 window.Pusher = require('pusher-js');
 
@@ -26,3 +27,7 @@ function updateRoomStatus(rooms) {
         }
     });
 }
+
+
+    
+

@@ -17,7 +17,7 @@ use App\Http\Middleware\FournisseurMiddleware;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -32,6 +32,7 @@ Route::post('/users/store', [HomeController::class, 'store'])->name('store');
 Route::put('/user/update/{id}', [HomeController::class, 'update'])->name('user.update');
 Route::delete('/users/{id}', [HomeController::class, 'destroy'])->name('users.destroy');
 Route::get('/settings/{id}', [HomeController::class, 'modifier'])->name('settings');
+Route::get('/produit', [HomeController::class, 'index_produit'])->name('produit');
 
 });
 
@@ -42,7 +43,7 @@ Route::get('/dashbord', [EntrepriseController::class, 'index'])->name('dashbord'
 Route::get('/produits', [EntrepriseController::class, 'allproduits'])->name('produits');
 Route::get('/addproduit', [EntrepriseController::class, 'add'])->name('produits.add');
 Route::post('/store', [EntrepriseController::class, 'store'])->name('produits.store');
-Route::get('/parametre/{id}', [HomeController::class, 'modifier_entreprise'])->name('parametre');
+Route::get('/parametre/{id}', [HomeController::class, 'modifier'])->name('parametre');
 Route::put('/produit/update/{id}', [EntrepriseController::class, 'update'])->name('produit.update');
 Route::delete('/produits/{id}', [EntrepriseController::class, 'destroy'])->name('produits.destroy');
 Route::get('/fournisseurs', [EntrepriseController::class, 'list_fournisseurs'])->name('fournisseurs');
@@ -63,7 +64,7 @@ Route::get('/bord', [FournisseurController::class, 'index'])->name('bord');
 Route::get('/fournisseur/commandes', [CommandeController::class, 'afficher_Commandes'])->name('fournisseur.commandes');
 Route::put('/fournisseur/commandes/{id}', [CommandeController::class, 'updateCommandeStatus'])->name('fournisseur.update_commande_status');
 Route::get('/telecharger_pdf/{id}/pdf', [CommandeController::class, 'telechargerPDF'])->name('telecharger_pdf');
-Route::get('/update/{id}', [HomeController::class, 'modifier_fournisseur'])->name('fournisseur.update');
+Route::get('/update/{id}', [HomeController::class, 'modifier'])->name('fournisseur.update');
 Route::post('/livraison', [LivraisonController::class, 'store'])->name('livraison.store');
 Route::get('/livraisons', [LivraisonController::class, 'index'])->name('livraisons.index');
 Route::get('/livraison/pdf/{id}', [LivraisonController::class, 'downloadPDF'])->name('livraison.pdf');

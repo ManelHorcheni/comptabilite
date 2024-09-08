@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Produit;
 use App\Mail\HelloMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -34,8 +35,13 @@ class HomeController extends Controller
         $entreprises = User::where('role', 1)->count();
         $admins = User::where('role', 0)->count();
 
+        $categories = Produit::select('categorie', \DB::raw('count(*) as total'))
+        ->groupBy('categorie')
+        ->pluck('total', 'categorie')
+        ->toArray();
+
         $users=User::get()->count();
-        return view('admin.home',compact('clients', 'fournisseurs', 'entreprises', 'admins'));
+        return view('admin.home',compact('clients', 'fournisseurs', 'entreprises', 'admins','categories'));
     }
 
     //retourne la page users avec filtre
@@ -153,26 +159,51 @@ public function destroy($id)
     }
 }
 
-//retourne la page settings
+//retourne la page settings compte 
 public function modifier($id)
 {
     $user = User::findOrFail($id);
-    return view('admin.settings', compact('user'));
+    $role = $user->role;
+    if ($role == 1) {
+        return view('entreprise.parametre', compact('user'));
+    } elseif ($role == 2) {
+        return view('fournisseur.update_compte', compact('user'));
+    } else {
+        return view('admin.settings', compact('user'));
+    }
 }
 
-//retourne la page parametre
-public function modifier_entreprise($id)
+//retourne la page produit de l'admin
+public function index_produit(Request $request)
 {
-    $user = User::findOrFail($id);
-    return view('entreprise.parametre', compact('user'));
+    // Initialiser la requête pour récupérer les produits avec l'entreprise associée
+    $query = Produit::with('entreprise');
+
+    // Filtrer par nom de produit
+    if ($request->has('name') && !empty($request->input('name'))) {
+        $query->where('name', 'LIKE', '%' . $request->input('name') . '%');
+    }
+
+    // Filtrer par catégorie de produit
+    if ($request->has('categorie') && !empty($request->input('categorie'))) {
+        $query->where('categorie', $request->input('categorie'));
+    }
+
+    // Filtrer par nom de l'entreprise
+    if ($request->has('entreprise') && !empty($request->input('entreprise'))) {
+        // Filtrer via la relation avec l'entreprise
+        $query->whereHas('entreprise', function ($q) use ($request) {
+            $q->where('name', 'LIKE', '%' . $request->input('entreprise') . '%');
+        });
+    }
+
+    // Exécuter la requête et récupérer les résultats
+    $produits = $query->get();
+
+    // Retourner la vue avec les produits filtrés
+    return view('admin.produit', compact('produits'));
 }
 
-//retourne la page parametre
-public function modifier_fournisseur($id)
-{
-    $user = User::findOrFail($id);
-    return view('fournisseur.update_compte', compact('user'));
-}
 
 
 }

@@ -12,6 +12,25 @@
   <title>Comptabilite</title>
   <!-- Load Google Charts -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  {{-- <script src="{{ mix('js/app.js') }}" defer></script> --}}
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .chart-container {
+        position: relative;
+        width: 400px; /* Ajuste la largeur du graphique */
+        margin-left: 0; /* Aligne le graphique à gauche */
+    }
+    .chart-wrapper {
+        display: flex;
+        align-items: flex-start;
+    }
+    .chart-wrapper > .card {
+        flex: 1;
+    }
+</style>
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -156,18 +175,126 @@
 
 
         <div class="row mt-4">
-          <div class="col-lg-12 mb-lg-0 mb-4">
-            <div class="card z-index-2 h-100">
-              <div class="card z-index-0 " >                
-                <div class="card-body" >
+          <div class="chart-wrapper">
 
+            <div class="chart-card col-md-6">
+            <div class="card z-index-2 h-100">
+              <div class="card-body">
+                <h2>Statistiques des utilisateurs</h2>
+                <div class="chart-container">
+                  <canvas id="myPieChart"></canvas>
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="chart-card col-md-6">
+            <div class="card z-index-2 h-100">
+              <div class="card-body">
+                <h2>Répartition des Produits</h2>
+                <div class="chart-container">
+                  <canvas id="productChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          </div>
                     </div>
         </div>
 
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        // Graphique des utilisateurs
+        const ctxUser = document.getElementById('myPieChart').getContext('2d');
+        new Chart(ctxUser, {
+          type: 'pie',
+          data: {
+            labels: ['Clients', 'Fournisseurs', 'Entreprises', 'Admins'],
+            datasets: [{
+              label: 'Répartition des utilisateurs',
+              data: [{{ $clients }}, {{ $fournisseurs }}, {{ $entreprises }}, {{ $admins }}],
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)'
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+              ],
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'left',
+                labels: {
+                  font: {
+                    size: 14
+                  }
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(tooltipItem) {
+                    return tooltipItem.label + ': ' + tooltipItem.raw;
+                  }
+                }
+              }
+            }
+          }
+        });
+
+        // Graphique des produits
+        const ctxProduct = document.getElementById('productChart').getContext('2d');
+        const categories = @json($categories);
+        const labels = Object.keys(categories);
+        const data = Object.values(categories);
+
+        new Chart(ctxProduct, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Nombre de Produits',
+              data: data,
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              x: {
+                beginAtZero: true
+              },
+              y: {
+                beginAtZero: true
+              }
+            },
+            plugins: {
+              legend: {
+                position: 'top',
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(tooltipItem) {
+                    return tooltipItem.label + ': ' + tooltipItem.raw;
+                  }
+                }
+              }
+            }
+          }
+        });
+      });
+      </script>
 
                 
 </body>

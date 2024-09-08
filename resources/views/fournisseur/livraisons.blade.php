@@ -79,7 +79,7 @@
                                     <div class="col-md">
                                         <div class="shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center" id="cardTop">
                                             <h6 class="text-capitalize ps-3" id="titreTop">
-                                                <img src="{{ asset('commandes.png') }}" alt="Your Image" id="imageCardTop" class="img-fluid me-2">
+                                                <img src="{{ asset('livraison.png') }}" alt="Your Image" id="imageCardTop" class="img-fluid me-2">
                                                 Table de tous les livraisons
                                             </h6>
                                             
