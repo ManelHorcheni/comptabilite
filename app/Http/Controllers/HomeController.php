@@ -168,7 +168,9 @@ public function modifier($id)
         return view('entreprise.parametre', compact('user'));
     } elseif ($role == 2) {
         return view('fournisseur.update_compte', compact('user'));
-    } else {
+    } elseif ($role == 3) {
+        return view('client.compte', compact('user'));
+    }else {
         return view('admin.settings', compact('user'));
     }
 }

@@ -37,7 +37,9 @@ class LoginController extends Controller
         return redirect('/dashbord');
     } elseif ($user->role===2){ // Fournisseur
         return redirect('/bord'); 
-    }
+    } elseif ($user->role===3){ // Client
+        return redirect('/accueil'); 
+}
 }
 
     /**

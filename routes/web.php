@@ -9,10 +9,12 @@ use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\LivraisonController;
 use App\Http\Controllers\FactureController;
+use App\Http\Controllers\ClientController;
 
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\EntrepriseMiddleware;
 use App\Http\Middleware\FournisseurMiddleware;
+use App\Http\Middleware\ClientMiddleware;
 
 
 
@@ -75,5 +77,11 @@ Route::get('/factures', [FactureController::class, 'index_Fourisseur'])->name('f
 });
 
 //client
+Route::middleware([ClientMiddleware::class])->group(function () {
 
+Route::get('/accueil', [ClientController::class, 'index'])->name('accueil');
+Route::get('/client/update/{id}', [HomeController::class, 'modifier'])->name('client.update');
+Route::put('/compte/{id}', [HomeController::class, 'update'])->name('compte.update');
+Route::get('/contact', [ClientController::class, 'contact'])->name('contact');
 
+});

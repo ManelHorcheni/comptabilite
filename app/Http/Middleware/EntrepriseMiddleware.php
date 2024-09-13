@@ -18,7 +18,7 @@ class EntrepriseMiddleware
         if (auth()->check() && auth()->user()->isEntreprise()) {
             return $next($request); 
         }else{
-            return redirect('/login')->with('error', 'You have no admin access.');
+            return redirect('/login')->with('error', 'You have no entreprise access.');
         }
     }
 }

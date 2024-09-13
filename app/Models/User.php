@@ -70,37 +70,41 @@ class User extends Authenticatable
     {
         return $this->role === 2; 
     }
+    public function isClient()
+    {
+        return $this->role === 3; 
+    }
 
 
-public function commandes_Entreprise()
-{
-    return $this->hasMany(Commande::class, 'entreprise_id');
-}
+    public function commandes_Entreprise()
+    {
+        return $this->hasMany(Commande::class, 'entreprise_id');
+    }
 
-public function commandes_Fournisseur()
-{
-    return $this->hasMany(Commande::class, 'fournisseur_id');
-}
+    public function commandes_Fournisseur()
+    {
+        return $this->hasMany(Commande::class, 'fournisseur_id');
+    }
 
-public function livraisons_Entreprise()
-{
-    return $this->hasMany(Livraison::class, 'entreprise_id');
-}
+    public function livraisons_Entreprise()
+    {
+        return $this->hasMany(Livraison::class, 'entreprise_id');
+    }
 
-public function livraisons_Fournisseur()
-{
-    return $this->hasMany(Livraison::class, 'fournisseur_id');
-}
+    public function livraisons_Fournisseur()
+    {
+        return $this->hasMany(Livraison::class, 'fournisseur_id');
+    }
 
-public function factures_Entreprise()
-{
-    return $this->hasMany(Facture::class, 'entreprise_id');
-}
+    public function factures_Entreprise()
+    {
+        return $this->hasMany(Facture::class, 'entreprise_id');
+    }
 
-public function factures_Fournisseur()
-{
-    return $this->hasMany(Facture::class, 'fournisseur_id');
-}
+    public function factures_Fournisseur()
+    {
+        return $this->hasMany(Facture::class, 'fournisseur_id');
+    }
 
 
 }

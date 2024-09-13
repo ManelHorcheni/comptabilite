@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class FournisseurMiddleware
+class ClientMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,10 @@ class FournisseurMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->isFournisseur()) {
+        if (auth()->check() && auth()->user()->isClient()) {
             return $next($request); 
         }else{
-            return redirect('/login')->with('error', 'You have no fournisseur access.');
+            return redirect('/accueil')->with('error', 'You have no client access.');
         }
     }
 }
