@@ -83,5 +83,8 @@ Route::get('/accueil', [ClientController::class, 'index'])->name('accueil');
 Route::get('/client/update/{id}', [HomeController::class, 'modifier'])->name('client.update');
 Route::put('/compte/{id}', [HomeController::class, 'update'])->name('compte.update');
 Route::get('/contact', [ClientController::class, 'contact'])->name('contact');
+Route::get('/panier', [ClientController::class, 'panier'])->name('panier');
+Route::post('/cart/add/{produitId}', [ClientController::class, 'addToCart'])->name('cart.add');
+Route::delete('/cart/remove/{produitId}', [ClientController::class, 'removeFromCart'])->name('panier.remove');
 
 });

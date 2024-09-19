@@ -18,7 +18,12 @@
                     <a class="nav-link" href="{{ route('contact')}}">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Panier <i class="fas fa-shopping-cart"></i></a>
+                    <a class="nav-link position-relative" href="{{ route('panier')}}">Panier <i class="fas fa-shopping-cart"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{ $itms_panier }}
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -162,7 +162,10 @@
                                 <h5 class="card-title">{{ $produit->name }}</h5>
                                 <p class="card-text">{{ $produit->description }}</p>
                                 <p class="card-text"><strong>Prix: {{ $produit->prix }} TND</strong></p>
-                                <a href="#" class="btn btn-success">Ajouter au Panier</a>
+                                <form action="{{ route('cart.add', $produit->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success">Ajouter au Panier</button>
+                                </form>
                             </div>
                         </div>
                     </div>

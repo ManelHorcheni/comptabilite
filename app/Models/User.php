@@ -57,6 +57,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function panier()
+    {
+        return $this->hasOne(Panier::class, 'user_id');
+    }
+
     //Role
     public function isAdmin()
     {
